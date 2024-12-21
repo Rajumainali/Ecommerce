@@ -1,0 +1,76 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+  width: 100% auto;
+  height: 80px;
+  position: relative;
+}
+.whole-menu {
+  display: flex;
+  list-style: none;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  height: 60px;
+}
+.whole-menu li a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.5s ease-in-out;
+}
+.whole-menu li a:hover {
+  color: green;
+}
+.whole-menu li a.active {
+  color: rgb(103, 177, 0);
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+.list-icon {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+}
+.list-icon.first {
+  position: absolute;
+  left: 20px;
+}
+.login li {
+  list-style: none;
+  text-decoration: none;
+  margin-top: 10px;
+
+  /* border-bottom: 1px solid black; */
+}
+.login {
+  /* background-color: #f4f2f2; */
+  padding: 10px;
+  position: absolute;
+  left: 10px;
+  top: 50px;
+  /* border-radius: 10px; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.login li a {
+  color: #5d5d5d;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.login li:hover {
+  color: aquamarine;
+}
+.whole-menu button {
+  width: 40px;
+  background-color: transparent;
+  border: none;
+}
