@@ -1,11 +1,14 @@
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+body {
+    overflow-x: hidden;
+  }
+  
 .storemain{
     min-height: 30vh;
     background-color:#f6f6f6;
-    width: 96vw;
+    width: 98vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,15 +117,15 @@
    font-weight: bold;
 } 
 .aside{
-    width: 75vw;
+    width: 80vw;
     min-height: 75vh;
     display: flex;
 }
 
 .aside .right_aside{
-position: relative;
-left: 150px;
-width: 100%;
+    position:relative;
+    width: 100%;
+    left:150px
 }
 
 .aside .right_aside .top{
@@ -138,3 +141,4 @@ width: 100%;
    padding: 7px;
    outline: none;
 }
+

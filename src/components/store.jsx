@@ -5,11 +5,13 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import { FaRegEye } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
+import Footer from './footer';
 import { FaRegHeart } from "react-icons/fa6";
 const Store = () => {
   const sty={
     display:'none'
   }
+   const [loading, setLoading] = useState(true); // New loading state
   const sty1={
     display:'block'
   }
@@ -26,11 +28,18 @@ const Store = () => {
   const run = (e)=>{
     setprice(e.target.value)
   }
+  // Fetch products from the API
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.error("Error fetching data:", error));
+      .then((data) => {
+        setProducts(data);
+        setLoading(false); // Set loading to false once data is fetched
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false); // Stop loading even if there's an error
+      });
   }, []);
   return (
     <>
@@ -75,7 +84,13 @@ const Store = () => {
       </div>
        {/* Product Cards */}
               <div className="product-container">
-                {products.map((product) => (
+              {loading ? (
+           <div className="loading">
+           <div className="spinner"></div>
+           <p>Loading products...</p>
+         </div>
+          ) : (
+                products.map((product) => (
                   <div key={product.id} className="product-card">
         <img
           src={product.image}
@@ -96,11 +111,12 @@ const Store = () => {
         <h3 className="product-title">{product.title}</h3>
         <p className="product-price">${product.price.toFixed(2)}</p>
       </div>
-                ))}
+                ))
+              )}
               </div>
      </div>
     </div>
-
+    <Footer/>
     </>
   )
 }
