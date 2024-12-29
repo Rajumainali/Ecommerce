@@ -5,7 +5,7 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import { FaRegEye } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
-import Footer from './footer';
+import Footer from './Footer';
 import { FaRegHeart } from "react-icons/fa6";
 const Store = () => {
   const sty={

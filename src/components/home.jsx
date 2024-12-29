@@ -16,8 +16,8 @@ import { FaRegEye } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa6";
 import "./home.css";
-import Footer from "./footer";
-
+import Footer from "./Footer";
+import { Link } from 'react-router-dom';
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // New loading state
@@ -171,7 +171,7 @@ const Home = () => {
                     <FiShoppingCart size={"20px"} color="#333" />
                   </div>
                   <div className="icon">
-                    <FaRegEye size={"20px"} color="#333" />
+                    <Link to='/single' state={product}><FaRegEye size={"20px"} color="#333" /></Link>
                   </div>
                 </div>
                 <h3 className="product-title">{product.title}</h3>

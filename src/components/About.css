@@ -64,6 +64,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left:6px solid green;
     width: 300px;
   
     padding: 20px;
@@ -96,4 +97,31 @@
   .step p {
     color: #666;
     font-size: 14px;
+  }
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .image-container img {
+    display: block;
+    width: 300px;
+    height: auto;
+  }
+
+  .hover-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .image-container:hover .hover-text {
+    opacity: 1;
   }

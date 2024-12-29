@@ -6,6 +6,7 @@ import About from "./components/about";
 import Blog from "./components/blog";
 import Page from "./components/page";
 import Contact from "./components/contact";
+import SinglePage from "./components/SinglePage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/page" element={<Page />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/single" element={<SinglePage  />} />
       </Routes>
     </BrowserRouter>
   );

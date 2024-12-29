@@ -5,6 +5,7 @@ import s from '../assets/2.png'
 import r from '../assets/3.png'
 import about from "../assets/about.png";
 import { GoNorthStar } from "react-icons/go";
+import Footer from './Footer';
 const About = () => {
   const shopcolor = {
     color: "green",
@@ -83,11 +84,21 @@ const About = () => {
 
     <div className="main_team">
     <div className="teamMember">
+    <div class="image-container">
       <img src={u} alt="no image" />
+      <div class="hover-text">Ujjwol Mainali(Managing Director)</div>
+      </div>
+      <div class="image-container">
       <img src={r} alt="no image" />
+      <div class="hover-text">Raju Mainali(CEO)</div>
+      </div>
+      <div class="image-container">
       <img src={s} alt="no image" />
+      <div class="hover-text">Saubhagya Maharjan(ChairMan)</div>
+      </div>
     </div>
     </div>
+    <Footer/>
    </>
   )
 }
