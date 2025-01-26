@@ -93,10 +93,11 @@ body {
     justify-content: center;
     flex-direction: column;
 }
-.categories a{
+.categories span{
     text-decoration: none;
     margin-top: 20px;
     color: #707070;
+    cursor: pointer;
 }
 .categories a:hover{
     color: green;
@@ -142,3 +143,30 @@ body {
    outline: none;
 }
 
+.aside .right_aside .top .left button{
+    margin-right: 35px;
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease
+}
+.aside .right_aside .top .left{
+    position: relative;
+}
+
+.aside .right_aside .top .left .reset{
+    position: absolute;
+    top:20px;
+    left: 0px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease
+}
+
+.aside .right_aside .top .left button:hover {
+    transform: scale(1.5);
+}
+.aside .right_aside .top .left button:hover + .reset{
+    opacity: 1;
+}

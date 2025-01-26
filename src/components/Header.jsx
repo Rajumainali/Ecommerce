@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import "./Header.css";
 import logo from "../assets/u.png";
 import { CiHeart } from "react-icons/ci";
@@ -6,6 +6,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { HiMenu } from "react-icons/hi";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom"; 
+import { cartContext } from "./CartContext";
 
 
 const Header = () => {
@@ -18,6 +19,12 @@ const Header = () => {
     setMenu(!menuOpen);
   };
 
+ 
+  const value  = useContext(cartContext)
+
+
+
+  
   return (
     <>
       <div className="container">
@@ -65,9 +72,12 @@ const Header = () => {
 
         
           <li className="list-icon">
-            <CiHeart size={"25px"} />
-            <FiShoppingCart size={"25px"} />
-          </li>
+  <CiHeart size={"25px"} />
+      <Link to="/cart" className="cart-link">
+    <FiShoppingCart size={"25px"} />
+    <span className="cart-count">{value.countItem}</span>
+  </Link>
+</li>
         </ul>
       </div>
     </>

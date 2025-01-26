@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { cartContext } from './CartContext'
 import './About.css'
 import u from '../assets/1.png'
 import s from '../assets/2.png'
@@ -10,6 +11,8 @@ const About = () => {
   const shopcolor = {
     color: "green",
   };
+  const fruits = useContext(cartContext);
+  console.log(fruits)
   return (
    <>
      <div className="storemain">
@@ -38,31 +41,31 @@ const About = () => {
                     <div className="right"></div>
                   </div>
                 </div>
-         <div class="steps-container">
-    <div class="step left">
-      <div class="step-header">
-        <div class="step-number">STEP 01</div>
+         <div className="steps-container">
+    <div className="step left">
+      <div className="step-header">
+        <div className="step-number">STEP 01</div>
       </div>
       <h3>CHOOSE YOUR PRODUCTS</h3>
       <p>There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
     </div>
-    <div class="step right">
-      <div class="step-header">
-        <div class="step-number">STEP 02</div>
+    <div className="step right">
+      <div className="step-header">
+        <div className="step-number">STEP 02</div>
       </div>
       <h3>CONNECT NEAREST STORE</h3>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
     </div>
-    <div class="step left">
-      <div class="step-header">
-        <div class="step-number">STEP 03</div>
+    <div className="step left">
+      <div className="step-header">
+        <div className="step-number">STEP 03</div>
       </div>
       <h3>Share your location</h3>
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
     </div>
-    <div class="step right">
-      <div class="step-header">
-        <div class="step-number">STEP 04</div>
+    <div className="step right">
+      <div className="step-header">
+        <div className="step-number">STEP 04</div>
       </div>
       <h3>Get delivered fast</h3>
       <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment.</p>
@@ -84,17 +87,17 @@ const About = () => {
 
     <div className="main_team">
     <div className="teamMember">
-    <div class="image-container">
+    <div className="image-container">
       <img src={u} alt="no image" />
-      <div class="hover-text">Ujjwol Mainali(Managing Director)</div>
+      <div className="hover-text">Ujjwol Mainali(Managing Director)</div>
       </div>
-      <div class="image-container">
+      <div className="image-container">
       <img src={r} alt="no image" />
-      <div class="hover-text">Raju Mainali(CEO)</div>
+      <div className="hover-text">Raju Mainali(CEO)</div>
       </div>
-      <div class="image-container">
+      <div className="image-container">
       <img src={s} alt="no image" />
-      <div class="hover-text">Saubhagya Maharjan(ChairMan)</div>
+      <div className="hover-text">Saubhagya Maharjan(ChairMan)</div>
       </div>
     </div>
     </div>

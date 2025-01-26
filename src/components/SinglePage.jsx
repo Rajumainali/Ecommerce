@@ -14,6 +14,14 @@ export default function SinglePage(prob) {
     }
     const location = useLocation();
     const user = location.state || {};
+
+
+    // this is for our custom product and want to display different images when we click on colors
+    // const [get,change] = useState("red");
+
+    // const changeColor = (e)=>{
+    //   change(e.target.getAttribute("data-value"));
+    // }
   return (
    <>
    <div className="storemain">
@@ -22,6 +30,8 @@ export default function SinglePage(prob) {
     </div>
     <div className="Singleproduct-container">
       <div className="Singleproduct-image">
+      {/* this is for our custom product and want to display different images when we click on colors */}
+        {/* <img src={user.image[get]} alt="Singleproduct" /> */}
         <img src={user.image} alt="Singleproduct" />
       </div>
       <div className="Singleproduct-details">
@@ -34,7 +44,7 @@ export default function SinglePage(prob) {
           {user.description}
         </p>
         <p>Product Code: <strong>{user.id}</strong></p>
-        <p>Quantity: <strong>{user.rating.count}</strong></p>
+        {/* <p>Quantity: <strong>{user.rating.count}</strong></p> */}
         <p>Shipping tax: <strong>Free</strong></p>
 
         <div className="options">
@@ -52,8 +62,10 @@ export default function SinglePage(prob) {
           <div className="color">
             <h4>Color:</h4>
             <div className="color-options">
-              <span className="color-box" style={{ background: "red" }}></span>
-              <span className="color-box" style={{ background: "yellow" }}></span>
+              {/* <span className="color-box" data-value="red" onClick={changeColor} style={{ background: "red" }}></span>
+              <span className="color-box" data-value="green" onClick={changeColor} style={{ background: "green" }}></span> */}
+              <span className="color-box"  style={{ background: "red" }}></span>
+              <span className="color-box"  style={{ background: "green" }}></span>
               <span className="color-box" style={{ background: "orange" }}></span>
               <span className="color-box" style={{ background: "purple" }}></span>
             </div>

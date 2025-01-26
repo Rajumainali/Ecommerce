@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Pagination, Scrollbar, A11y,Autoplay} from "swiper/modules";
@@ -16,8 +16,10 @@ import { FaRegEye } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa6";
 import "./home.css";
+import img2 from '../assets/green.png'
 import Footer from "./Footer";
 import { Link } from 'react-router-dom';
+import { cartContext } from "./CartContext";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // New loading state
@@ -26,6 +28,76 @@ const Home = () => {
     color: "black"
   
   }
+  
+  const value = useContext(cartContext)
+  const [items, setItems] = useState([]);
+  const [err, seterr] = useState("");
+  const [notification, setNotification] = useState("");//hook for notifucation 
+  const handleButtonClick = (item) => {
+    setItems((prevItems) => {
+      // Get the existing items from localStorage (if any)
+      const storedCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+     
+      // Check if the item already exists in the cart by comparing ids
+      const itemExists = storedCart.some((cartItem) => cartItem.id === item.id);
+  
+      if (itemExists) {
+        // If the item is already in the cart, show the "Item already added" message
+        seterr("Item already added to the cart");
+        setTimeout(() => seterr(""), 3000);
+        return prevItems; // Return the previous state without any change
+      } else {
+        // If the item is not in the cart, add it
+        const updatedItems = [...storedCart, item];
+  
+        // Update the localStorage with the new cart items
+        localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+  
+        // Show a success notification
+        setNotification("Item added to the cart");
+        setTimeout(() => setNotification(""), 3000);
+        value.setCountItem(value.countItem+1);
+        return updatedItems; // Return the updated array to update the state
+      }
+    });
+  };
+  
+  
+  
+
+
+
+  const [response, setResponse] = useState(null);
+  const doPost = async () => {
+    try {
+      const res = await fetch(`http://localhost/api/index.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: "New Green Jacet",
+          price: 20,
+          description: "This is a new green leather jacket available in multiple color.",
+          image:img2
+         }),
+      });
+      const data = await res.json();
+      setResponse(data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  
+ 
+// this is for our custom product and want to display different images when we click on colors
+  // const productcheck = {
+  //   image:{
+  //    red: img,
+  //    green: img2},
+  //   title:"Bad jacket",
+  //   description:"This is nice demo jacket",
+  //   price:17,
+  // }
 
   const sty = {
     width: "80%",
@@ -38,7 +110,7 @@ const Home = () => {
 
   // Fetch products from the API
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("http://localhost/api/index.php/")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
@@ -146,7 +218,8 @@ const Home = () => {
             <div className="right"></div>
           </div>
         </div>
-
+        {notification && <div className="notification">{notification}</div>}
+        {err && <div className="notification1" >{err}</div>}
         {/* Product Cards */}
 
        <div className="product-container">
@@ -168,17 +241,39 @@ const Home = () => {
                     <FaRegHeart size={"20px"} color="#333" />
                   </div>
                   <div className="icon">
-                    <FiShoppingCart size={"20px"} color="#333" />
+                    <FiShoppingCart size={"20px"}  onClick={() => handleButtonClick(product)} color="#333"  />
                   </div>
                   <div className="icon">
                     <Link to='/single' state={product}><FaRegEye size={"20px"} color="#333" /></Link>
                   </div>
                 </div>
                 <h3 className="product-title">{product.title}</h3>
-                <p className="product-price">${product.price.toFixed(2)}</p>
+                <p className="product-price">${product.price}</p>
               </div>
             ))
           )}
+  
+  {/* this is for our custom product and want to display different images when we click on colors */}
+          {/* <div className="product-card">
+                <img
+                  src={img}
+                  alt=""
+                  className="product-image"
+                />
+                <div className="icon-container">
+                  <div className="icon">
+                    <FaRegHeart size={"20px"} color="#333" />
+                  </div>
+                  <div className="icon">
+                    <FiShoppingCart size={"20px"} color="#333" />
+                  </div>
+                  <div className="icon">
+                    <Link to='/single' state={productcheck} ><FaRegEye size={"20px"} color="#333" /></Link>
+                  </div>
+                </div>
+                <h3 className="product-title">Nice Jacket</h3>
+                <p className="product-price">$17</p>
+              </div> */}
         </div>
       </div>
           <div className="Daily-product">
@@ -238,12 +333,14 @@ const Home = () => {
                 </div>
               </div>
               <h3 className="product-title">{product.title}</h3>
-              <p className="product-price">${product.price.toFixed(2)}</p>
+              <p className="product-price">${product.price}</p>
             </div>
           </SwiperSlide>
         ))
       )}
       </Swiper>
+      {/* <button onClick={doPost}>Post</button> */}
+      {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
       </div>
       <Footer/>
     </>

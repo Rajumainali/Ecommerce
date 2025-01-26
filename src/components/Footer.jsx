@@ -13,7 +13,6 @@ export default function Footer() {
     const styl = {
         fontWeight: "bold", 
         color: "black"
-      
       }
       const color={
         color:"green"
